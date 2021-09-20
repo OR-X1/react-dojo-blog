@@ -3,29 +3,22 @@ import BlogList from './BlogList'
 
 const Home = () => {
 
-    const [blogs, setBlogs] = useState([
-        { title: 'my new website', body: 'lorem ipsum ...', author: 'othmane', id: 1},
-        { title: 'my new logo', body: 'lorem ipsum ...', author: 'yassin', id: 2},
-        { title: 'my new course', body: 'lorem ipsum ...', author: 'zouhair', id: 3}
-    ])
-    const [name, setName] = useState('othmane');
-
-    const handleDelete = (id) => {
-        const  newBlogs = blogs.filter(blog => blog.id !== id);
-        setBlogs(newBlogs);
-    }
+    const [blogs, setBlogs] = useState(null);
 
     useEffect(() => {
-        console.log('hi');
-        console.log(blogs);
-    }, [name]);
+        fetch('http://localhost:8000/blogs')
+        .then(res => {
+            return res.json();
+        })
+        .then(data => {
+            console.log(data);
+            setBlogs(data);
+        })
+    }, []);
     
     return (
         <div className="home">
-            <BlogList blogs={blogs} title="All blogs" handleDelete={handleDelete}/>
-            {/* <BlogList blogs={blogs.filter((blog) => blog.author === "othmane")} title="othman's blogs"/> */}
-            <button onClick={() => setName('yassin') }>change</button>
-            <p>{ name }</p>
+            {blogs && <BlogList blogs={blogs} title="All blogs"/>}
         </div>
     );
 }
