@@ -1,0 +1,22 @@
+{
+    "blogs": [
+        {
+            "title": "my new website",
+            "body": "lorem ipsum ...",
+            "author": "othmane",
+            "id": 1
+        },
+        {
+            "title": "my new logo",
+            "body": "lorem ipsum ...",
+            "author": "yassin",
+            "id": 2
+        },
+        {
+            "title": "my new course",
+            "body": "lorem ipsum ...",
+            "author": "zouhair",
+            "id": 3
+        }
+    ]
+}
